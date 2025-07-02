@@ -31,7 +31,7 @@ stages:
       displayName: 'Run unit tests'
       
 - stage: DeployToStaging
-  displayName: 'Deploy to Staging'
+  displayName: 'Dev1'
   dependsOn: Test
   jobs:
   - job: DeployStagingJob
