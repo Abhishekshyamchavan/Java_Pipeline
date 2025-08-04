@@ -30,7 +30,7 @@ stages:
         echo "Running unit tests..."
       displayName: 'Run unit tests'
       
-- stage: Dev1
+- stage: DeployToStaging
   displayName: 'Dev1'
   dependsOn: Test
   jobs:
