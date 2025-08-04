@@ -1,0 +1,14 @@
+trigger:
+  - main
+pool:
+ name: xyz
+ VmImage: 'ubuntu-latest'
+stages:
+  - stage: Build
+    displayName: 'Build Stage'
+    jobs:
+      - job: BuildJob
+        displayName: 'Build Job'
+        steps:
+          - 
+  
