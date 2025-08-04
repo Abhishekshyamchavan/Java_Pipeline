@@ -1,0 +1,24 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: Build
+  displayName: 'Build Job'
+  steps:
+  - script: echo "Running build step"
+    displayName: 'Build Step'
+
+- job: Test
+  displayName: 'Test Job'
+  steps:
+  - script: echo "Running test step"
+    displayName: 'Test Step'
+
+- job: Deploy
+  displayName: 'Deploy Job'
+  steps:
+  - script: echo "Running deploy step"
+    displayName: 'Deploy Step'
