@@ -1,0 +1,24 @@
+trigger:
+- main
+
+pool: 
+  vmImage: ubuntu-latest
+
+stages:
+- stage: CI
+  jobs:
+  - job: CIWork
+    steps:
+    - script: "Do CI work"
+
+- stage: Build
+  displayName: 'Build Stage'
+  jobs:
+  - job: BuildJob
+    displayName: 'Build Job'
+    steps:
+    - script: |
+        echo "Restoring project dependencies..."
+      displayName: 'Restore dependencies'
+    - script: |
+        echo "Running unit tests..."
