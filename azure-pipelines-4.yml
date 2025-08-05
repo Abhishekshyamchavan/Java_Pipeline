@@ -5,26 +5,19 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-  - stage: 
-    displayName: Stage1
+  - stage: Build
+    displayName: Build Stage
     dependsOn: []
     jobs:
        - job:
          displayName: Job1
 
-  - stage: 
-    displayName: Stage2
-    dependsOn: []
+  - stage: Dev1_EUW
+    displayName: Dev1
+    dependsOn: 
+    - Build
     jobs:
       - job:
         displayName: Job2
 
-  - stage: 
-    displayName: Stage3
-    dependsOn: 
-    - Stage1
-    - Stage2
-    jobs:
-      - job:
-        displayName: Job3
              
