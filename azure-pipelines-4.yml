@@ -1,23 +1,27 @@
 trigger:
-  - main
-
-pool: 
-  vmImage: 'ubuntu-latest'
+- main
 
 stages:
-  - stage: Build
-    displayName: Build Stage
-    dependsOn: []
-    jobs:
-       - job:
-         displayName: Job1
+- stage: Build
+  displayName: 'Build Stage'
+  jobs:
+  - job: BuildJob
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: echo "Building the app..."
+      displayName: 'Build'
 
-  - stage: Dev2
-    displayName: Dev2
-    dependsOn: 
-    - Build
-    jobs:
-      - job:
-        displayName: Job2
-
-             
+- stage: DeployToStaging
+  displayName: 'Deploy to Staging'
+  dependsOn: Build
+  jobs:
+  - deployment: DeployJob
+    displayName: 'Staging Deployment Job'
+    environment: staging   # <-- This is key. You must create this in Azure DevOps
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "Deploying to staging..."
+            displayName: 'Run Deployment Script'
