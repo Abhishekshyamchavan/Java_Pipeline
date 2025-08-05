@@ -5,20 +5,14 @@ pool:
   vmImage: 'ubuntu-latest'
 
 jobs:
-- job: Build
-  displayName: 'Build Job'
+- job: Job1
   steps:
-  - script: echo "Running build step"
-    displayName: 'Build Step'
+  - script: echo "Running Job 1"
 
-- job: Test
-  displayName: 'Test Job'
+- job: Job2
   steps:
-  - script: echo "Running test step"
-    displayName: 'Test Step'
+  - script: echo "Running Job 2"
 
-- job: Deploy
-  displayName: 'Deploy Job'
+- job: Job3
   steps:
-  - script: echo "Running deploy step"
-    displayName: 'Deploy Step'
+  - script: echo "Running Job 3"
