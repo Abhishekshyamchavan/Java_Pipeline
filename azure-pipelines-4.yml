@@ -12,8 +12,8 @@ stages:
        - job:
          displayName: Job1
 
-  - stage: Dev1_EUW
-    displayName: Dev1
+  - stage: Dev2
+    displayName: Dev2
     dependsOn: 
     - Build
     jobs:
