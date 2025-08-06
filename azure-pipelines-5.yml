@@ -1,37 +1,20 @@
-trigger:
-- main
+# Set variables once
+variables:
+  configuration: debug
+  platform: x64
 
-pool:
-  vmImage: ubuntu-latest
+steps:
 
-stages:
-  - stage: Build
-    displayName: Build
-    jobs:
-      - job: Build
-    
-    
-  - stage: Deploy
-    displayName: Deploy
-    dependsOn: Build
-    jobs:
-      - job: Deploy
-        displayName: Deploy
-      - deployment: Manual_approval
-        environment: staging
-        pool: server
-        strategy: 
-         runOnce:
-           deploy:
-             steps:
-               - task: ManualValidation@1
-                 inputs:
-                   notifyUsers: 'abc@gmail.com'
-                   instructions: 'Please approve'
-            
+# Use them once
+- task: MSBuild@1
+  inputs:
+    solution: solution1.sln
+    configuration: $(configuration) # Use the variable
+    platform: $(platform)
 
-             
-
-
-
-
+# Use them again
+- task: MSBuild@1
+  inputs:
+    solution: solution2.sln
+    configuration: $(configuration) # Use the variable
+    platform: $(platform)
