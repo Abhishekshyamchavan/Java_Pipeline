@@ -1,0 +1,36 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: Build
+    displayName: Build
+    
+  - stage: Build
+    displayName: Build
+    jobs:
+      - job: Deploy
+        displayName: Deploy
+        dependsOn: Build
+      - deployment: manual approval
+        environment: staging
+        pool: server
+        strategy: 
+         runOnce:
+           deploy:
+             steps:
+               - 
+- task: ManualValidation@1
+  inputs:
+    notifyUsers: 'abc@gmail.com'
+    instructions: 'Please approve'
+        
+            
+
+             
+
+
+
+
